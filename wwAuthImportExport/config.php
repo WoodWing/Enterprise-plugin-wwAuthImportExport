@@ -15,6 +15,9 @@
    limitations under the License.
 ****************************************************************************/
 
-
-define ('DELIMITER', ',');
+//
+// change column and row delimiters here for international versions of excel 
+// for example: Dutch Excel needs ";" as a delimiter in .csv files
+//
+define ('DELIMITER', ",");
 define ('EOL', "\r\n");
