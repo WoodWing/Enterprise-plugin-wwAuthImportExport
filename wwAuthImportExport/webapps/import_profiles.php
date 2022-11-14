@@ -29,6 +29,9 @@ if ($fc) {
 	$lines = preg_split( '/\r\n|\r|\n/', $fc );
 		
 	foreach ($lines as $rowi=>$row) {
+        if (empty($row)){
+            continue;
+        }
 
 		//
 		// skip comment rows

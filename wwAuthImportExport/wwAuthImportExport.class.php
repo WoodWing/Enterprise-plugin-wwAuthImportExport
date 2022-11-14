@@ -25,7 +25,7 @@ require_once dirname(__FILE__).'/config.php';
 
 class wwAuthImportExport
 {
-	public function wwAuthImportExport() {		
+	public function __construct() {
 		$this->dbh = DBDriverFactory::gen();
 	}
 
@@ -39,8 +39,9 @@ class wwAuthImportExport
 	
 		$context = array();
 	
-		require_once BASEDIR.'/server/bizclasses/BizPublication.class.php';
-		$pubs = BizPublication::getPublicationInfos(BizSession::getShortUserName());
+		require_once BASEDIR.'/server/bizclasses/wfl/Publication.class.php';
+        $wflPublication = new WW_BizClasses_Wfl_Publication();
+		$pubs = $wflPublication->getPublicationInfosByRequestInfo( array('Categories', 'States'));
 
 		foreach ($pubs as $pub) {
 	
@@ -178,7 +179,7 @@ class wwAuthImportExport
 		$sql = "select `feature`,`profile`,`value` from $dbpv order by `profile`,`feature`";
 		$sth = $this->dbh->query($sql);
 		while( ($row = $this->dbh->fetch($sth) ) ) {
-			if ($features[$row['feature']]) {
+            if (key_exists($row['feature'], $features) && $features[$row['feature']]) {
 
 				$profilefeatures[] = Array( 'profile' => $profiles[$row['profile']]['profile'],
 											'feature' => $features[$row['feature']],

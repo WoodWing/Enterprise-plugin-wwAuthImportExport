@@ -14,7 +14,7 @@ require_once dirname(__FILE__).'/../config.php';
 $ticket = checkSecure('publadmin');
 
 
-if ($_REQUEST['export']) {
+if (isset($_REQUEST['export']) && $_REQUEST['export']) {
 	header("Content-type: application/octet-stream");
 	header("Content-Disposition: attachment; filename=".DBSELECT."_accessprofiles.csv");
 	header("Pragma: no-cache");
@@ -44,7 +44,7 @@ $profilefeatures = $aie->getProfileFeatures();
 
 //print_r($profilefeatures);
 
-if ($_REQUEST['export']) $eol = EOL; else $eol = '<BR>';
+if (isset($_REQUEST['export']) && $_REQUEST['export']) $eol = EOL; else $eol = '<BR>';
 
 echo '# '.$eol;
 echo '# EXPORT ACCESS PROFILES'.$eol;

@@ -25,7 +25,7 @@ class wwAuthImportExport_EnterprisePlugin extends EnterprisePlugin
 		require_once BASEDIR.'/server/interfaces/plugins/PluginInfoData.class.php';
 		$info = new PluginInfoData(); 
 		$info->DisplayName = 'wwAuthImportExport';
-		$info->Version     = '20190405'; // don't use PRODUCTVERSION
+		$info->Version     = '20221110'; // don't use PRODUCTVERSION
 		$info->Description = 'Export/Import Authentications, User Groups and Access Profiles';
 		$info->Copyright   = COPYRIGHT_WOODWING;
 		return $info;
